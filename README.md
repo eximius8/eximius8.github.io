@@ -23,6 +23,21 @@ I am a full-stack web developer experienced in Django, FastAPI, and React. My st
 
 ---
 
+## Experience  
+### Medical Developer – NEXUS / ASTRAIA
+*Nov 2021 – Present*  
+- Designed and implemented the FMF (Fetal Medicine Foundation) risk algorithm in Python to assess pregnancy complication risks
+- Developed a Django-based web application to host and deliver the FMF algorithm
+- Built internal tools using Tauri to support the design and development of the main medical software
+- Migrated CI/CD pipelines from Jenkins to Bitbucket Pipelines, improving automation and maintainability
+
+### Software Developer – Innopolis University
+*Sep 2019 – Oct 2021*  
+- Led a small team in developing a web application for quality control of pipe welds using DICOM image analysis
+- Created Python packages and a desktop application with Tkinter to interact with COM port devices used in the oil and gas industry
+
+---
+
 ## Languages  
 - English (fluent)  
 - German (intermediate)
