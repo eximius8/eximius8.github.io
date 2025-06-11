@@ -1,11 +1,11 @@
 # Mikhail Trunov
 
+📄 **[Download PDF Version](https://github.com/eximius8/youreximius8.github.iorepo/releases/latest/download/Mikhail_Trunov_CV.pdf)**
+
 ## Contact  
 📧 mikhail.trunov@gmail.com  
 💼 [linkedin.com/in/mtrunov](https://linkedin.com/in/mtrunov)  
 🐙 [github.com/eximius8](https://github.com/eximius8)
-
-📄 **[Download PDF Version](https://github.com/eximius8/youreximius8.github.iorepo/releases/latest/download/Mikhail_Trunov_CV.pdf)**
 
 ---
 
