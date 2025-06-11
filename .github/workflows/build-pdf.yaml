@@ -1,0 +1,51 @@
+name: Generate CV PDF from Markdown
+
+on:
+  push:
+    branches: [ main ]
+    paths: 
+      - 'README.md'
+
+jobs:
+  generate-pdf:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Prepare README for PDF
+      run: |
+        # Remove PDF download link from README before converting
+        sed '/📄.*Download PDF Version/d' README.md > README_for_pdf.md
+        
+    - name: Convert Markdown to PDF
+      uses: baileyjm02/markdown-to-pdf@v1
+      with:
+        input_path: README_for_pdf.md
+        output_dir: ./
+        build_html: false
+        
+    - name: Rename PDF
+      run: mv README_for_pdf.pdf Mikhail_Trunov_CV.pdf
+    
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: cv-v${{ github.run_number }}
+        release_name: CV PDF v${{ github.run_number }}
+        body: 'Auto-generated CV PDF from README.md'
+        draft: false
+        prerelease: false
+    
+    - name: Upload PDF to Release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./Mikhail_Trunov_CV.pdf
+        asset_name: Mikhail_Trunov_CV.pdf
+        asset_content_type: application/pdf
