@@ -41,7 +41,7 @@ I am a full-stack web developer experienced in Django, FastAPI, and React. My st
 ---
 
 ## 🎓 Education
-**M.Sc. in Advanced Materials and Processes (MAP)** – FAU Erlangen-Nürnberg
+2016 - 2019 **M.Sc. in Advanced Materials and Processes (MAP)** – FAU Erlangen-Nürnberg
 
 ---
 
