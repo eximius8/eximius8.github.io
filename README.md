@@ -2,19 +2,19 @@
 
 📄 **[Download PDF Version](https://github.com/eximius8/eximius8.github.io/releases/download/cv-latest/Mikhail_Trunov_CV.pdf)**
 
-## Contact  
+## 📫 Contact  
 📧 mikhail.trunov@gmail.com  
 💼 [linkedin.com/in/mtrunov](https://linkedin.com/in/mtrunov)  
 🐙 [github.com/eximius8](https://github.com/eximius8)
 
 ---
 
-## Summary  
+## 🧠 Summary  
 I am a full-stack web developer experienced in Django, FastAPI, and React. My strongest language is Python, and I also work comfortably with Next.js, TensorFlow, and LangChain. I always write unit tests and follow best practices in code quality and maintainability. I’m confident with Docker, Google Cloud, and CI/CD pipelines on GitHub, Azure, and Bitbucket. While I explore Rust through side projects, I’m still gaining experience in the language. I’m currently looking for a web developer position with a strong focus on AI and building intelligent agents.
 
 ---
 
-## Skills 
+## 🛠️ Skills 
 - Languages: Python (expert), JavaScript, TypeScript, Rust (beginner)
 - Web Frameworks: Django, FastAPI, React, Next.js
 - AI & ML Tools: TensorFlow, LangChain
@@ -25,7 +25,7 @@ I am a full-stack web developer experienced in Django, FastAPI, and React. My st
 
 ---
 
-## Experience  
+## 💼 Experience  
 ### Medical Developer – NEXUS / ASTRAIA
 *Nov 2021 – Present*  
 - Designed and implemented the FMF (Fetal Medicine Foundation) risk algorithm in Python to assess pregnancy complication risks
@@ -45,7 +45,7 @@ I am a full-stack web developer experienced in Django, FastAPI, and React. My st
 
 ---
 
-## Languages  
+## 💬 Languages  
 - English (fluent)  
 - German (intermediate)
 - Russian (Native)
