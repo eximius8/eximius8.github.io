@@ -1,11 +1,13 @@
 # Mikhail Trunov
 
+![CV Last Updated](https://img.shields.io/github/last-commit/eximius8/eximius8.github.io?label=CV%20Last%20Updated&style=flat-square)
+
 📄 **[Download PDF Version](https://github.com/eximius8/eximius8.github.io/releases/download/cv-latest/Mikhail_Trunov_CV.pdf)**
 
 ## 📫 Contact  
 📧 mikhail.trunov@gmail.com  
 💼 [linkedin.com/in/mtrunov](https://linkedin.com/in/mtrunov)  
-🐙 [github.com/eximius8](https://github.com/eximius8)
+🐙 [github.com/eximius8](https://github.com/eximius8)  
 📍 82110, Germering, Germany
 
 ---
