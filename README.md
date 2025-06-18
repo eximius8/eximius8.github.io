@@ -24,7 +24,7 @@ I am a full-stack web developer experienced in Django, FastAPI, and React. My st
 - DevOps & Cloud: Docker, GitHub Actions, Azure Pipelines, Bitbucket Pipelines, Google Cloud Platform
 - Testing: pytest, unittest, jest
 - Databases: PostgreSQL, SQLite, Redis
-- Other Tools: Git, Linux, REST APIs, OpenAPI/Swagger
+- Other Tools: Git, Linux, MCP, REST APIs, OpenAPI/Swagger, Telegram bots
 
 ---
 
@@ -44,13 +44,13 @@ I am a full-stack web developer experienced in Django, FastAPI, and React. My st
 ---
 
 ## 🎓 Education
-2016 - 2019 **M.Sc. in Advanced Materials and Processes (MAP)** – FAU Erlangen-Nürnberg
+2016 - 2019 **M.Sc. in Advanced Materials and Processes (MAP)** – FAU Erlangen-Nürnberg, Germany
 
 2012 - 2016 **PhD course in Materials Science** – Volgograd State Technical University, Russia (I do not have a PhD)
 
-2010 - 2012 **M.Eng. in Materials Science** – Volgograd State Technical University
+2010 - 2012 **M.Eng. in Materials Science** – Volgograd State Technical University, Russia
 
-2006 - 2010 **B.Eng. in Industrial Engineering** – Volgograd State Technical University
+2006 - 2010 **B.Eng. in Industrial Engineering** – Volgograd State Technical University, Russia
 
 ---
 
