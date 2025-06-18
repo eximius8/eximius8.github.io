@@ -17,6 +17,11 @@ I am a full-stack web developer experienced in Django, FastAPI, and React. My st
 
 ---
 
+## ✏️ Projects 
+### [AutoLISP Script for Involute Gear Profile Generation in AutoCAD (eximius8/evolventa)](https://github.com/eximius8/evolventa) 
+**2008-2012** My first programming project as a student.  
+Developed an AutoLISP script to automate the drawing of involute gear profiles in AutoCAD. The script calculates gear geometry based on user input and generates corresponding drawings. It also exports gear parameters to an Excel spreadsheet for documentation and further analysis.   
+
 ## 🛠️ Skills 
 - Languages: Python (expert), JavaScript, TypeScript, Rust (beginner)
 - Web Frameworks: Django, FastAPI, React, Next.js
