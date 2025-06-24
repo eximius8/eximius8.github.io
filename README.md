@@ -5,6 +5,7 @@
 📄 **[Download PDF Version](https://github.com/eximius8/eximius8.github.io/releases/download/cv-latest/Mikhail_Trunov_CV.pdf)**
 
 ## 📫 Contact  
+💻 [trunov.me - latest version of my CV](https://trunov.me)  
 📧 mikhail.trunov@gmail.com  
 💼 [linkedin.com/in/mtrunov](https://linkedin.com/in/mtrunov)  
 🐙 [github.com/eximius8](https://github.com/eximius8)  
@@ -29,6 +30,15 @@ I am a full-stack web developer experienced in Django, FastAPI, and React. My st
 ---
 
 ## ✏️ Projects 
+### [Python package for monitoring serial (COM) port communication (eximius8/comportsniffer)](https://github.com/eximius8/comportsniffer) 
+Developed a Python tool to intercept and log data exchanged between a software application and a physical COM port device.
+Primarily created as a vibe-coding project to explore low-level serial communication and real-time data sniffing.
+
+### [Hazard Class Calculator Web App (eximius8/ecowag)](https://github.com/eximius8/ecowag) 
+Wagtail-based web application and REST API for classifying chemical substance hazards
+Built a Wagtail application to calculate hazard classes of compound substances in accordance with Russian environmental regulations.
+Includes PDF report generation using `LaTeX` via the `pylatex` library.
+
 ### [AutoLISP Script for Involute Gear Profile Generation in AutoCAD (eximius8/evolventa)](https://github.com/eximius8/evolventa) 
 **2008-2012** My first programming project as a student.  
 Developed an AutoLISP script to automate the drawing of involute gear profiles in AutoCAD. The script calculates gear geometry based on user input and generates corresponding drawings. It also exports gear parameters to an Excel spreadsheet for documentation and further analysis.
