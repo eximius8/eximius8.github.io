@@ -6,7 +6,7 @@
 
 ## 📫 Contact  
 💻 [trunov.me - latest version of my CV](https://trunov.me)  
-📧 mikhail.trunov@gmail.com  
+📧 mikhail@trunov.me  
 💼 [linkedin.com/in/mtrunov](https://linkedin.com/in/mtrunov)  
 🐙 [github.com/eximius8](https://github.com/eximius8)  
 📍 82110, Germering, Germany
