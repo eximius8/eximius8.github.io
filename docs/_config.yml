@@ -1,0 +1,8 @@
+title: Mikhail Trunov CV
+description: Portfolio for Mikhail Trunov
+baseurl: ""
+url: "https://trunov.me"
+
+markdown: kramdown
+highlighter: rouge
+theme: minima

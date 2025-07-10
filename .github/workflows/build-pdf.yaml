@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths: 
-      - 'README.md'
+      - 'docs/index.md'
   
 permissions:
   contents: write
@@ -16,26 +16,26 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Prepare README for PDF
+    - name: Prepare md file for PDF
       run: |
         # Remove PDF download link from README before converting
-        sed '/📄.*Download PDF Version/d' README.md > README_for_pdf.md
+        sed '/📄.*Download PDF Version/d' docs/index.md > cv_for_pdf.md
         
     - name: Convert Markdown to PDF
       uses: baileyjm02/markdown-to-pdf@v1
       with:
-        input_path: README_for_pdf.md
+        input_path: cv_for_pdf.md
         output_dir: ./
         build_html: false
         
     - name: Rename PDF
-      run: mv README_for_pdf.pdf Mikhail_Trunov_CV.pdf
+      run: mv cv_for_pdf.pdf Mikhail_Trunov_CV.pdf
     
     - name: Update Release
       uses: softprops/action-gh-release@v2
       with:
         tag_name: cv-latest
         name: Latest CV PDF
-        body: 'Auto-generated CV PDF from README.md - Updated on ${{ github.event.head_commit.timestamp }}'
+        body: 'Auto-generated CV PDF from docs/index.md - Updated on ${{ github.event.head_commit.timestamp }}'
         files: Mikhail_Trunov_CV.pdf
         make_latest: true
