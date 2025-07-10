@@ -18,8 +18,10 @@ jobs:
     
     - name: Prepare md file for PDF
       run: |
-        # Remove PDF download link from README before converting
-        sed '/📄.*Download PDF Version/d' docs/index.md > cv_for_pdf.md
+        # Add header with my name on top of the pdf file
+        printf "# Mikhail Trunov\n\n" > cv_for_pdf.md
+        # Remove PDF download link from README before converting        
+        sed '/📄.*Download PDF Version/d' docs/index.md >> cv_for_pdf.md
         
     - name: Convert Markdown to PDF
       uses: baileyjm02/markdown-to-pdf@v1
