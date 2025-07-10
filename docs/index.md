@@ -1,5 +1,3 @@
-# Mikhail Trunov
-
 ![CV Last Updated](https://img.shields.io/github/last-commit/eximius8/eximius8.github.io?label=CV%20Last%20Updated&style=flat-square)
 
 📄 **[Download PDF Version](https://github.com/eximius8/eximius8.github.io/releases/download/cv-latest/Mikhail_Trunov_CV.pdf)**
