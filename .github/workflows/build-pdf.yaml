@@ -2,7 +2,7 @@ name: Generate CV PDF from Markdown
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, switch-title ]
     paths: 
       - 'docs/index.md'
   
