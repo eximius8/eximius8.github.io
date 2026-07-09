@@ -3,41 +3,45 @@ name: Generate CV PDF from Markdown
 on:
   push:
     branches: [ main ]
-    paths: 
-      - 'docs/index.md'
-  
+    paths:
+      - 'cv.md'
+      - '.github/workflows/build-pdf.yaml'
+  workflow_dispatch:
+
 permissions:
   contents: write
 
 jobs:
   generate-pdf:
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v4
-    
-    - name: Prepare md file for PDF
-      run: |
-        # Add header with my name on top of the pdf file
-        printf "# Mikhail Trunov\n\n" > cv_for_pdf.md
-        # Remove PDF download link from README before converting        
-        sed '/📄.*Download PDF Version/d' docs/index.md >> cv_for_pdf.md
-        
+
     - name: Convert Markdown to PDF
       uses: baileyjm02/markdown-to-pdf@v1
       with:
-        input_path: cv_for_pdf.md
+        input_path: cv.md
         output_dir: ./
         build_html: false
-        
+
     - name: Rename PDF
-      run: mv cv_for_pdf.pdf Mikhail_Trunov_CV.pdf
-    
+      run: mv cv.pdf Mikhail_Trunov_CV.pdf
+
+    - name: Publish PDF to site
+      run: |
+        cp Mikhail_Trunov_CV.pdf docs/Mikhail_Trunov_CV.pdf
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add docs/Mikhail_Trunov_CV.pdf
+        git diff --cached --quiet || git commit -m "Update CV PDF [skip ci]"
+        git push
+
     - name: Update Release
       uses: softprops/action-gh-release@v2
       with:
         tag_name: cv-latest
         name: Latest CV PDF
-        body: 'Auto-generated CV PDF from docs/index.md - Updated on ${{ github.event.head_commit.timestamp }}'
+        body: 'Auto-generated CV PDF from cv.md - Updated on ${{ github.event.head_commit.timestamp }}'
         files: Mikhail_Trunov_CV.pdf
         make_latest: true
