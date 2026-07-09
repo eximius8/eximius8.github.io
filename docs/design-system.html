@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design System · trunov.me</title>
+<meta name="description" content="Design tokens and components for trunov.me — dark, technical, terminal-inspired.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #0a0b0a;
+    color: #eae7de;
+    font-family: 'Manrope', sans-serif;
+    min-height: 100vh;
+    padding-bottom: 100px;
+  }
+  ::selection { background: #b6ff3c; color: #0a0b0a; }
+  a { color: inherit; text-decoration: none; }
+
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  .mono-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #706c60;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 16px;
+  }
+
+  .page-header { padding: 56px 0 40px; border-bottom: 1px solid rgba(234,231,222,0.12); }
+  .page-header .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #b6ff3c;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+  }
+  .page-header h1 { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; margin: 0 0 12px; }
+  .page-header p { font-size: 16px; color: #a8a49a; margin: 0; max-width: 600px; }
+
+  section { padding: 56px 0; border-bottom: 1px solid rgba(234,231,222,0.12); }
+  section:last-of-type { border-bottom: none; }
+  section > h2 { font-size: 24px; font-weight: 800; margin: 0 0 28px; letter-spacing: -0.02em; }
+
+  /* Colors */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: rgba(234,231,222,0.12);
+    border: 1px solid rgba(234,231,222,0.12);
+  }
+  .color-cell { background: #0a0b0a; }
+  .color-cell .swatch { height: 88px; }
+  .color-cell .info { padding: 16px 18px; }
+  .color-cell .name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .color-cell .hex { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #706c60; }
+  .color-cell .use { font-size: 12.5px; color: #706c60; margin-top: 6px; }
+
+  /* Type */
+  .type-families { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+  .type-family { border: 1px solid rgba(234,231,222,0.16); padding: 24px; }
+  .type-family .mono-label { margin-bottom: 14px; }
+  .type-family .specimen-display { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 40px; letter-spacing: -0.03em; }
+  .type-family .specimen-mono { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 32px; }
+  .type-family .note { font-size: 13px; color: #a8a49a; margin-top: 10px; }
+
+  .type-scale { display: flex; flex-direction: column; gap: 16px; }
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 14px 0;
+    border-top: 1px solid rgba(234,231,222,0.1);
+  }
+  .type-row .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #706c60;
+    width: 180px;
+    flex-shrink: 0;
+  }
+  .type-row .sample { color: #eae7de; }
+  .sample-h1 { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: clamp(40px, 6vw, 76px); letter-spacing: -0.03em; }
+  .sample-h2 { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 32px; letter-spacing: -0.02em; }
+  .sample-h3 { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+  .sample-body { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 15px; }
+  .sample-mono { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 12.5px; letter-spacing: 0.06em; }
+
+  /* Layout & spacing */
+  .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+  .spec-card { border: 1px solid rgba(234,231,222,0.16); padding: 22px; }
+  .spec-card .key { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #b6ff3c; margin-bottom: 8px; }
+  .spec-card .value { font-size: 15px; color: #c4c1b8; }
+
+  /* Components */
+  .component-list { display: flex; flex-direction: column; gap: 44px; }
+
+  .btn-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    padding: 15px 26px;
+    border-radius: 2px;
+  }
+  .btn-primary { background: #b6ff3c; color: #0a0b0a; font-weight: 700; }
+  .btn-secondary { background: transparent; color: #eae7de; font-weight: 600; border: 1px solid rgba(234,231,222,0.28); }
+
+  .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 6px 12px;
+    border: 1px solid rgba(234,231,222,0.18);
+    color: #c4c1b8;
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #b6ff3c;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .status .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #b6ff3c;
+    box-shadow: 0 0 10px #b6ff3c;
+  }
+
+  .card {
+    max-width: 340px;
+    border: 1px solid rgba(234,231,222,0.16);
+    padding: 30px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .card .tag-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #706c60; }
+  .card h3 { font-size: 17px; font-weight: 700; margin: 0; }
+  .card p { font-size: 14px; line-height: 1.6; color: #a8a49a; margin: 0; }
+
+  .section-header { display: flex; align-items: baseline; gap: 16px; }
+  .section-header .num { font-family: 'JetBrains Mono', monospace; color: #b6ff3c; font-size: 14px; }
+  .section-header h2 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; margin: 0; }
+
+  @media (max-width: 680px) {
+    .container { padding: 0 20px; }
+    .type-families { grid-template-columns: 1fr; }
+    .type-row { flex-direction: column; gap: 8px; }
+    .type-row .label { width: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <div class="eyebrow">Design System &middot; v1</div>
+    <h1>trunov.me</h1>
+    <p>Tokens and components extracted from the portfolio site. Dark, technical, terminal-inspired.</p>
+  </header>
+
+  <!-- COLORS -->
+  <section>
+    <h2>Color</h2>
+    <div class="color-grid">
+      <div class="color-cell">
+        <div class="swatch" style="background:#0a0b0a;"></div>
+        <div class="info">
+          <div class="name">Ink</div>
+          <div class="hex">#0a0b0a</div>
+          <div class="use">Background</div>
+        </div>
+      </div>
+      <div class="color-cell">
+        <div class="swatch" style="background:#eae7de;"></div>
+        <div class="info">
+          <div class="name">Paper</div>
+          <div class="hex">#eae7de</div>
+          <div class="use">Primary text</div>
+        </div>
+      </div>
+      <div class="color-cell">
+        <div class="swatch" style="background:#a8a49a;"></div>
+        <div class="info">
+          <div class="name">Muted</div>
+          <div class="hex">#a8a49a</div>
+          <div class="use">Body copy, secondary text</div>
+        </div>
+      </div>
+      <div class="color-cell">
+        <div class="swatch" style="background:#706c60;"></div>
+        <div class="info">
+          <div class="name">Dim</div>
+          <div class="hex">#706c60</div>
+          <div class="use">Metadata, labels, hairline text</div>
+        </div>
+      </div>
+      <div class="color-cell">
+        <div class="swatch" style="background:#b6ff3c;"></div>
+        <div class="info">
+          <div class="name">Accent</div>
+          <div class="hex">#b6ff3c</div>
+          <div class="use">CTAs, links, highlights, status</div>
+        </div>
+      </div>
+      <div class="color-cell">
+        <div class="swatch" style="background:rgba(234,231,222,0.12);"></div>
+        <div class="info">
+          <div class="name">Hairline</div>
+          <div class="hex">rgba(234,231,222,0.12)</div>
+          <div class="use">Borders, dividers, grid seams</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPE -->
+  <section>
+    <h2>Type</h2>
+    <div class="type-families">
+      <div class="type-family">
+        <div class="mono-label">Display / Manrope</div>
+        <div class="specimen-display">Aa Manrope 800</div>
+        <div class="note">Headlines, section titles. Weight 700&ndash;800, tight tracking (-0.02 to -0.03em).</div>
+      </div>
+      <div class="type-family">
+        <div class="mono-label">Mono / JetBrains Mono</div>
+        <div class="specimen-mono">Aa Mono 700</div>
+        <div class="note">Labels, nav, tags, section numbers, CTAs, metadata. Uppercase + letter-spacing for eyebrows.</div>
+      </div>
+    </div>
+    <div class="type-scale">
+      <div class="type-row">
+        <div class="label">Hero / H1</div>
+        <div class="sample sample-h1">Full-stack builder</div>
+      </div>
+      <div class="type-row">
+        <div class="label">Section H2</div>
+        <div class="sample sample-h2">Selected work</div>
+      </div>
+      <div class="type-row">
+        <div class="label">Card H3</div>
+        <div class="sample sample-h3">KinderCafe.app</div>
+      </div>
+      <div class="type-row">
+        <div class="label">Body</div>
+        <div class="sample sample-body">Python-first engineer based in Germering.</div>
+      </div>
+      <div class="type-row">
+        <div class="label">Mono label</div>
+        <div class="sample sample-mono">FEATURED · LIVE PRODUCT</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPACING / GRID -->
+  <section>
+    <h2>Layout &amp; spacing</h2>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <div class="key">Max width</div>
+        <div class="value">1180px content, 32px side padding (20px on mobile &lt;680px)</div>
+      </div>
+      <div class="spec-card">
+        <div class="key">Section rhythm</div>
+        <div class="value">80px vertical padding per section, 1px hairline dividers between them</div>
+      </div>
+      <div class="spec-card">
+        <div class="key">Grid seams</div>
+        <div class="value">Card grids use 1px hairline gap (bg color showing through) instead of gaps + borders per card</div>
+      </div>
+      <div class="spec-card">
+        <div class="key">Background texture</div>
+        <div class="value">Fixed 64px grid overlay, ~4% opacity, ink color</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPONENTS -->
+  <section>
+    <h2>Components</h2>
+    <div class="component-list">
+
+      <div>
+        <div class="mono-label">Buttons</div>
+        <div class="btn-row">
+          <span class="btn btn-primary">Primary &#8594;</span>
+          <span class="btn btn-secondary">Secondary</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="mono-label">Tags</div>
+        <div class="tag-row">
+          <span class="tag">Python</span>
+          <span class="tag">Docker</span>
+          <span class="tag">React</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="mono-label">Status indicator</div>
+        <div class="status">
+          <span class="dot"></span>
+          Available for freelance work
+        </div>
+      </div>
+
+      <div>
+        <div class="mono-label">Card</div>
+        <div class="card">
+          <div class="tag-label">TAG</div>
+          <h3>Card title</h3>
+          <p>Supporting description text sits here at 14&ndash;15px, muted color, 1.6 line height.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="mono-label">Section header</div>
+        <div class="section-header">
+          <span class="num">01</span>
+          <h2>Section title</h2>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
