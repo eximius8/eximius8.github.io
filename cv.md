@@ -54,11 +54,6 @@ Developed an AutoLISP script to automate the drawing of involute gear profiles i
 - Built internal tools using Tauri to support the design and development of the main medical software
 - Migrated CI/CD pipelines from Jenkins to Bitbucket Pipelines, improving automation and maintainability
 
-### Software Developer – Innopolis University, Innopolis, Russia
-*Sep 2019 – Oct 2021 (2 years)*
-- Led a small team in developing a web application for quality control of pipe welds using DICOM image analysis
-- Created Python packages and a desktop application with Tkinter to interact with COM port devices used in the oil and gas industry
-
 ---
 
 ## 🎓 Education
