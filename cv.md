@@ -48,7 +48,7 @@ Developed an AutoLISP script to automate the drawing of involute gear profiles i
 
 ## 💼 Experience
 ### Medical Developer – NEXUS / ASTRAIA, Ismaning, Germany
-*Nov 2021 – Present (4.5 years)*
+*Nov 2021 – Present (5 years)*
 - Designed and implemented the FMF (Fetal Medicine Foundation) risk algorithm in Python to assess pregnancy complication risks
 - Developed a Django-based web application to host and deliver the FMF algorithm
 - Built internal tools using Tauri to support the design and development of the main medical software

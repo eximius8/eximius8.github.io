@@ -3,470 +3,432 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mikhail Trunov — Full-stack builder</title>
-<meta name="description" content="Python-first engineer based in Germering, Germany. I design, build and ship — from local LLM infra to production web apps — mostly solo, mostly fast.">
-<meta property="og:type" content="website">
+<title>Mikhail Trunov — Full-stack developer</title>
+<meta name="description" content="Mikhail Trunov — Python-first full-stack developer based in Germering, Germany. Medical software at NEXUS / ASTRAIA, products built end to end with AI.">
+<meta property="og:type" content="profile">
 <meta property="og:url" content="https://trunov.me/">
-<meta property="og:title" content="Mikhail Trunov — Full-stack builder">
-<meta property="og:description" content="Python-first engineer. I ship products with AI at the core — local LLM infra, cloud/DevOps, MVPs, landing pages.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230a0b0a'/%3E%3Ctext x='32' y='42' font-family='monospace' font-weight='700' font-size='26' fill='%23b6ff3c' text-anchor='middle'%3EMT/%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Mikhail Trunov — Full-stack developer">
+<meta property="og:description" content="Python-first full-stack developer based in Germering, Germany.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f3a5f'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-style='italic' font-size='30' fill='%23f6f3ec' text-anchor='middle'%3EMT%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --bg: #f6f3ec;
+    --surface: #fffdf8;
+    --ink: #1c1b18;
+    --ink-2: #4a4740;
+    --muted: #8a8578;
+    --rule: #e2ddd0;
+    --accent: #1f3a5f;
+    --accent-soft: #e4e9f0;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141413;
+      --surface: #1b1b19;
+      --ink: #eeeae0;
+      --ink-2: #bdb8ab;
+      --muted: #858072;
+      --rule: #2d2c28;
+      --accent: #9db8de;
+      --accent-soft: #23293a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141413;
+    --surface: #1b1b19;
+    --ink: #eeeae0;
+    --ink-2: #bdb8ab;
+    --muted: #858072;
+    --rule: #2d2c28;
+    --accent: #9db8de;
+    --accent-soft: #23293a;
+  }
+
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background: #0a0b0a;
-    color: #eae7de;
-    font-family: 'Manrope', sans-serif;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
-  ::selection { background: #b6ff3c; color: #0a0b0a; }
-  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--accent); color: var(--bg); }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
-  .bg-grid {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.4;
-    background-image:
-      linear-gradient(rgba(234,231,222,0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(234,231,222,0.035) 1px, transparent 1px);
-    background-size: 64px 64px;
-    z-index: 0;
+  .page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 72px 40px 56px;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 80px;
   }
 
-  .pf-container { max-width: 1180px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
-
-  .mono { font-family: 'JetBrains Mono', monospace; }
-
-  /* NAV */
-  .pf-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 28px 0;
-    border-bottom: 1px solid rgba(234,231,222,0.12);
-    flex-wrap: wrap;
-    gap: 14px;
+  /* ---------- SIDEBAR ---------- */
+  .side { position: sticky; top: 48px; align-self: start; display: flex; flex-direction: column; gap: 36px; }
+  .monogram {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: var(--accent); color: var(--bg);
+    display: grid; place-items: center;
+    font-family: var(--serif); font-style: italic; font-size: 24px;
   }
-  .pf-logo { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 16px; letter-spacing: -0.02em; }
-  .pf-logo .slash { color: #b6ff3c; }
-  .pf-nav-links { display: flex; gap: 32px; font-family: 'JetBrains Mono', monospace; font-size: 13px; flex-wrap: wrap; }
-  .pf-nav-links a { color: #a8a49a; transition: color 0.15s; }
-  .pf-nav-links a:hover { color: #eae7de; }
+  .side h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 20px 0 10px;
+  }
+  .role { font-size: 15px; color: var(--ink-2); margin: 0; }
+  .loc { font-family: var(--mono); font-size: 12.5px; color: var(--muted); margin-top: 6px; }
 
-  /* HERO */
-  .pf-hero { padding: 96px 0 80px; border-bottom: 1px solid rgba(234,231,222,0.12); }
-  .status {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: #b6ff3c;
-    margin-bottom: 28px;
+  .side-block h2 {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin: 0 0 12px;
   }
-  .status .dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #b6ff3c;
-    box-shadow: 0 0 10px #b6ff3c;
+  .contact-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .contact-list a {
+    font-size: 14.5px; text-decoration: none; color: var(--ink-2);
+    border-bottom: 1px solid transparent; transition: color .15s, border-color .15s;
   }
-  .pf-hero h1 {
-    font-weight: 800;
-    font-size: clamp(40px, 6vw, 76px);
-    line-height: 1.02;
-    letter-spacing: -0.03em;
-    margin: 0 0 28px;
-    max-width: 900px;
+  .contact-list a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .btn-cv {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 16px;
+    padding: 10px 16px;
+    font-size: 14px; font-weight: 600; text-decoration: none;
+    background: var(--accent); color: var(--bg);
+    border-radius: 8px;
+    transition: opacity .15s;
+  }
+  .btn-cv:hover { opacity: .88; }
+
+  .lang-list { list-style: none; margin: 0; padding: 0; font-size: 14.5px; }
+  .lang-list li { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dashed var(--rule); }
+  .lang-list li:last-child { border-bottom: none; }
+  .lang-list span { color: var(--muted); font-size: 13.5px; }
+
+  .theme-toggle {
+    align-self: flex-start;
+    font-family: var(--mono); font-size: 12px;
+    background: none; border: 1px solid var(--rule); color: var(--muted);
+    padding: 6px 12px; border-radius: 999px; cursor: pointer;
+  }
+  .theme-toggle:hover { color: var(--ink); border-color: var(--muted); }
+
+  /* ---------- MAIN ---------- */
+  main { min-width: 0; }
+  .intro {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3vw, 34px);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin: 0 0 18px;
     text-wrap: pretty;
   }
-  .pf-hero h1 .accent { color: #b6ff3c; }
-  .pf-hero .lede { font-size: 19px; line-height: 1.6; color: #a8a49a; max-width: 560px; margin: 0 0 40px; }
-  .cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    padding: 15px 26px;
-    border-radius: 2px;
-    transition: background 0.15s, border-color 0.15s;
-  }
-  .btn-primary { background: #b6ff3c; color: #0a0b0a; font-weight: 700; }
-  .btn-primary:hover { background: #c9ff6b; }
-  .btn-secondary { background: transparent; color: #eae7de; font-weight: 600; border: 1px solid rgba(234,231,222,0.28); }
-  .btn-secondary:hover { border-color: rgba(234,231,222,0.6); background: rgba(234,231,222,0.04); }
+  .intro em { color: var(--accent); }
+  .intro-sub { color: var(--ink-2); font-size: 17px; max-width: 620px; margin: 0; }
 
-  /* SECTIONS */
-  .pf-section { padding: 80px 0; border-bottom: 1px solid rgba(234,231,222,0.12); }
-  .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 48px; }
-  .section-header .num { font-family: 'JetBrains Mono', monospace; color: #b6ff3c; font-size: 14px; }
-  .section-header h2 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; margin: 0; }
-
-  /* seam grids */
-  .seam-grid {
-    display: grid;
-    gap: 1px;
-    background: rgba(234,231,222,0.12);
-    border: 1px solid rgba(234,231,222,0.12);
-  }
-  .services-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-  .projects-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-
-  .service-cell { background: #0a0b0a; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; }
-  .service-cell .tag { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #706c60; }
-  .service-cell h3 { font-size: 19px; font-weight: 700; margin: 0; letter-spacing: -0.01em; }
-  .service-cell p { font-size: 14.5px; line-height: 1.6; color: #a8a49a; margin: 0; }
-
-  /* WORK */
-  .pf-featured {
-    display: block;
-    border: 1px solid rgba(234,231,222,0.16);
-    padding: 40px;
-    margin-bottom: 24px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.15s;
-  }
-  .pf-featured:hover { border-color: rgba(182,255,60,0.5); }
-  .pf-featured-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-  .pf-featured .eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: #b6ff3c;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  .pf-featured h3 { font-size: 28px; font-weight: 800; margin: 0 0 12px; letter-spacing: -0.02em; }
-  .pf-featured p { font-size: 15.5px; line-height: 1.6; color: #a8a49a; margin: 0; max-width: 520px; }
-  .pf-featured .arrow { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #eae7de; white-space: nowrap; }
-
-  .project-card {
-    background: #0a0b0a;
-    padding: 30px 26px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    min-height: 180px;
-    transition: background 0.15s;
-  }
-  .project-card:hover { background: rgba(234,231,222,0.03); }
-  .project-card .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-  .project-card h3 { font-size: 17px; font-weight: 700; margin: 0; letter-spacing: -0.01em; }
-  .project-card .year { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #706c60; }
-  .project-card p { font-size: 14px; line-height: 1.6; color: #a8a49a; margin: 0; flex: 1; }
-  .project-card .repo { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #706c60; }
-
-  /* EXPERIENCE */
-  .pf-exp-row {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    gap: 24px;
-    padding: 28px 0;
-    border-top: 1px solid rgba(234,231,222,0.12);
-  }
-  .pf-exp-row .period { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #706c60; }
-  .pf-exp-row h3 { font-size: 18px; font-weight: 700; margin: 0 0 4px; letter-spacing: -0.01em; }
-  .pf-exp-row .org { font-size: 14px; color: #a8a49a; margin-bottom: 14px; }
-  .pf-exp-row ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; }
-  .pf-exp-row li { font-size: 14.5px; line-height: 1.6; color: #c4c1b8; }
-
-  /* SKILLS */
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; }
-  .skill-group .label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: #706c60;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 14px;
-  }
-  .skill-group .items { display: flex; flex-wrap: wrap; gap: 8px; }
-  .skill-group .item {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    padding: 6px 12px;
-    border: 1px solid rgba(234,231,222,0.18);
-    color: #c4c1b8;
+  section { padding-top: 56px; margin-top: 56px; border-top: 1px solid var(--rule); }
+  .sec-title {
+    font-family: var(--mono);
+    font-size: 12px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--muted);
+    margin: 0 0 28px;
   }
 
-  /* CONTACT */
-  .pf-contact { padding: 88px 0 60px; }
-  .pf-contact h2 {
-    font-size: clamp(32px, 5vw, 52px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    margin: 0 0 20px;
-    max-width: 640px;
-  }
-  .pf-contact .sub { font-size: 16px; color: #a8a49a; margin: 0 0 40px; max-width: 520px; }
-  .contact-links { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 64px; }
-  .contact-link {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    padding: 13px 20px;
-    border: 1px solid rgba(234,231,222,0.22);
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    transition: border-color 0.15s;
-  }
-  .contact-link:hover { border-color: rgba(182,255,60,0.5); }
-  .contact-link .label { color: #b6ff3c; }
-  .contact-link .value { color: #706c60; }
+  /* Experience */
+  .job { display: grid; grid-template-columns: 140px 1fr; gap: 24px; }
+  .job + .job { margin-top: 36px; }
+  .period { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 4px; }
+  .period .dur { display: block; margin-top: 2px; }
+  .job h3 { font-family: var(--serif); font-weight: 600; font-size: 22px; margin: 0; letter-spacing: -0.01em; }
+  .org { color: var(--ink-2); font-size: 15px; margin: 2px 0 14px; }
+  .job ul { margin: 0; padding-left: 18px; color: var(--ink-2); }
+  .job li + li { margin-top: 6px; }
+  .job li::marker { color: var(--accent); }
 
-  .pf-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding-top: 28px;
-    border-top: 1px solid rgba(234,231,222,0.12);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12.5px;
-    color: #706c60;
+  /* Projects */
+  .featured {
+    display: block; text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 28px 30px;
+    margin-bottom: 16px;
+    transition: border-color .15s, transform .15s;
+  }
+  .featured:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .featured .tag {
+    display: inline-block;
+    font-family: var(--mono); font-size: 11.5px;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 3px 9px; border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .featured h3 { font-family: var(--serif); font-weight: 600; font-size: 26px; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .featured p { margin: 0; color: var(--ink-2); max-width: 560px; }
+  .featured .stack { font-family: var(--mono); font-size: 12.5px; color: var(--muted); margin-top: 14px; }
+
+  .proj-list { list-style: none; margin: 0; padding: 0; }
+  .proj-list li { border-bottom: 1px solid var(--rule); }
+  .proj-list a {
+    display: grid; grid-template-columns: 1fr auto; gap: 4px 24px;
+    padding: 20px 4px; text-decoration: none;
+  }
+  .proj-list h3 { font-size: 16.5px; font-weight: 600; margin: 0; }
+  .proj-list h3 .arrow { display: inline-block; color: var(--muted); transition: transform .15s, color .15s; }
+  .proj-list a:hover h3 .arrow { transform: translate(2px, -2px); color: var(--accent); }
+  .proj-list .year { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .proj-list p { grid-column: 1 / -1; margin: 0; color: var(--ink-2); font-size: 15px; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: 140px 1fr; gap: 14px 24px; margin: 0; }
+  .skills dt { font-size: 14px; color: var(--muted); padding-top: 3px; }
+  .skills dd { margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    font-size: 13.5px;
+    padding: 3px 10px;
+    border: 1px solid var(--rule);
+    background: var(--surface);
+    border-radius: 6px;
+    color: var(--ink-2);
   }
 
-  @media (max-width: 680px) {
-    .pf-container { padding-left: 20px; padding-right: 20px; }
-    .pf-nav { padding: 20px 0; }
-    .pf-nav-links { gap: 18px; font-size: 12px; }
-    .pf-section { padding-top: 52px; padding-bottom: 52px; }
-    .pf-hero { padding-top: 56px; padding-bottom: 52px; }
-    .pf-exp-row { grid-template-columns: 1fr; gap: 8px; }
-    .pf-featured { padding: 26px; }
-    .pf-featured-inner { flex-direction: column; align-items: flex-start; }
+  /* Education */
+  .edu { list-style: none; margin: 0; padding: 0; }
+  .edu li { display: grid; grid-template-columns: 140px 1fr; gap: 24px; }
+  .edu li + li { margin-top: 20px; }
+  .edu strong { display: block; font-weight: 600; }
+  .edu span { color: var(--ink-2); font-size: 15px; }
+
+  footer {
+    margin-top: 72px; padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono); font-size: 12.5px; color: var(--muted);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 880px) {
+    .page { grid-template-columns: 1fr; gap: 48px; padding: 40px 20px 40px; }
+    .side { position: static; }
+    .side h1 { font-size: 34px; }
+    .contact-list { flex-direction: row; flex-wrap: wrap; gap: 6px 18px; }
+  }
+  @media (max-width: 560px) {
+    .job, .edu li, .skills { grid-template-columns: 1fr; gap: 6px; }
+    .skills dd { margin-bottom: 10px; }
+    section { padding-top: 40px; margin-top: 40px; }
+    .featured { padding: 22px; }
+  }
+
+  /* ---------- PRINT ---------- */
+  @media print {
+    :root { --bg: #fff; --surface: #fff; --ink: #000; --ink-2: #222; --muted: #555; --rule: #ccc; --accent: #1f3a5f; }
+    .page { grid-template-columns: 220px 1fr; gap: 36px; padding: 0; }
+    .side { position: static; }
+    .theme-toggle, .btn-cv { display: none; }
+    .featured { transform: none !important; }
+    section { break-inside: avoid; }
   }
 </style>
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
 </head>
 <body>
 
-<div class="bg-grid"></div>
+<div class="page">
 
-<div class="pf-container">
-
-  <!-- NAV -->
-  <nav class="pf-nav">
-    <div class="pf-logo">mikhail_trunov<span class="slash">/</span></div>
-    <div class="pf-nav-links">
-      <a href="#work">work</a>
-      <a href="#services">services</a>
-      <a href="#experience">experience</a>
-      <a href="#contact">contact</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="pf-hero">
-    <div class="status">
-      <span class="dot"></span>
-      Available for freelance &amp; contract work
-    </div>
-    <h1>Full-stack builder.<br>I ship products with <span class="accent">AI at the core.</span></h1>
-    <p class="lede">
-      Python-first engineer based in Germering, Germany. I design, build and ship —
-      from local LLM infra to production web apps — mostly solo, mostly fast.
-    </p>
-    <div class="cta-row">
-      <a href="#work" class="btn btn-primary">View work &#8594;</a>
-      <a href="#contact" class="btn btn-secondary">Get in touch</a>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services" class="pf-section">
-    <div class="section-header">
-      <span class="num">01</span>
-      <h2>Services</h2>
-    </div>
-    <div class="seam-grid services-grid">
-      <div class="service-cell">
-        <div class="tag">AI INFRA</div>
-        <h3>Local LLM setup</h3>
-        <p>Self-hosted models on your own hardware or cloud — private, fast, no per-token bill.</p>
-      </div>
-      <div class="service-cell">
-        <div class="tag">CLOUDOPS</div>
-        <h3>DevOps &amp; CloudOps consulting</h3>
-        <p>CI/CD, Docker, Terraform, GCP — hands-on setup and ongoing support, not just slides.</p>
-      </div>
-      <div class="service-cell">
-        <div class="tag">PRODUCT</div>
-        <h3>MVP development</h3>
-        <p>From idea to shipped product — backend, frontend, infra, one person, fast iteration.</p>
-      </div>
-      <div class="service-cell">
-        <div class="tag">WEB</div>
-        <h3>Landing pages</h3>
-        <p>Fast, clean landing pages that load quick and convert — built and deployed end to end.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- WORK -->
-  <section id="work" class="pf-section">
-    <div class="section-header">
-      <span class="num">02</span>
-      <h2>Selected work</h2>
-    </div>
-
-    <a href="https://kindercafe.app" target="_blank" rel="noopener" class="pf-featured">
-      <div class="pf-featured-inner">
-        <div>
-          <div class="eyebrow">Featured &middot; Live product</div>
-          <h3>KinderCafe.app</h3>
-          <p>Smartphone app for finding child-friendly locations and events in Germany. Expo &middot; Firebase &middot; Cloud Run &middot; Wagtail &middot; PostGIS.</p>
-        </div>
-        <div class="arrow">kindercafe.app &#8594;</div>
-      </div>
-    </a>
-
-    <div class="seam-grid projects-grid">
-      <a href="https://github.com/eximius8/comportsniffer" target="_blank" rel="noopener" class="project-card">
-        <div class="top">
-          <h3>comportsniffer</h3>
-          <span class="year">2023</span>
-        </div>
-        <p>Python tool to intercept and log data exchanged between an app and a physical COM port device.</p>
-        <div class="repo">eximius8/comportsniffer</div>
-      </a>
-      <a href="https://github.com/eximius8/ecowag" target="_blank" rel="noopener" class="project-card">
-        <div class="top">
-          <h3>ecowag</h3>
-          <span class="year">2022</span>
-        </div>
-        <p>Wagtail app + REST API classifying chemical hazard classes, with LaTeX-generated PDF reports.</p>
-        <div class="repo">eximius8/ecowag</div>
-      </a>
-      <a href="https://github.com/eximius8/evolventa" target="_blank" rel="noopener" class="project-card">
-        <div class="top">
-          <h3>evolventa</h3>
-          <span class="year">2012</span>
-        </div>
-        <p>AutoLISP script automating involute gear profile drawing in AutoCAD, with Excel export.</p>
-        <div class="repo">eximius8/evolventa</div>
-      </a>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="pf-section">
-    <div class="section-header">
-      <span class="num">03</span>
-      <h2>Experience</h2>
-    </div>
+  <!-- SIDEBAR -->
+  <aside class="side">
     <div>
-      <div class="pf-exp-row">
-        <div class="period">2021 — Present</div>
+      <div class="monogram" aria-hidden="true">MT</div>
+      <h1>Mikhail<br>Trunov</h1>
+      <p class="role">Full-stack developer &middot; Python</p>
+      <div class="loc">Germering, Germany</div>
+    </div>
+
+    <div class="side-block">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li><a href="mailto:mikhail@trunov.me">mikhail@trunov.me</a></li>
+        <li><a href="https://linkedin.com/in/mtrunov" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/eximius8" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+      <a class="btn-cv" href="/Mikhail_Trunov_CV.pdf" target="_blank" rel="noopener">Download CV &#8595;</a>
+    </div>
+
+    <div class="side-block">
+      <h2>Languages</h2>
+      <ul class="lang-list">
+        <li>Russian <span>native</span></li>
+        <li>English <span>fluent</span></li>
+        <li>German <span>intermediate</span></li>
+      </ul>
+    </div>
+
+    <button class="theme-toggle" type="button" id="themeToggle">◐ theme</button>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+    <p class="intro">Full-stack developer who designs, builds and ships products end&nbsp;to&nbsp;end — with <em>AI at the core</em> of how I work.</p>
+    <p class="intro-sub">Python-first engineer with a materials-science background. Currently building medical software at NEXUS&nbsp;/&nbsp;ASTRAIA; in my own time I ship apps from backend and infra to mobile.</p>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2 class="sec-title">Experience</h2>
+      <div class="job">
+        <div class="period">Nov 2021 — now<span class="dur" id="tenure">5 years</span></div>
         <div>
           <h3>Medical Developer</h3>
-          <div class="org">NEXUS / ASTRAIA, Ismaning, Germany</div>
+          <div class="org">NEXUS / ASTRAIA &middot; Ismaning, Germany</div>
           <ul>
-            <li>Designed and implemented the FMF risk algorithm in Python for pregnancy complication risk assessment.</li>
-            <li>Built a Django web app to host and deliver the FMF algorithm; built internal Tauri tools for the core medical software team.</li>
-            <li>Migrated CI/CD from Jenkins to Bitbucket Pipelines.</li>
+            <li>Designed and implemented the FMF (Fetal Medicine Foundation) risk algorithm in Python to assess pregnancy complication risks.</li>
+            <li>Developed a Django web application to host and deliver the FMF algorithm.</li>
+            <li>Built internal tools with Tauri to support design and development of the main medical software.</li>
+            <li>Migrated CI/CD pipelines from Jenkins to Bitbucket Pipelines.</li>
           </ul>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SKILLS -->
-  <section class="pf-section">
-    <div class="section-header" style="margin-bottom:40px;">
-      <span class="num">04</span>
-      <h2>Toolbox</h2>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <div class="label">Languages</div>
-        <div class="items">
-          <span class="item">Python</span>
-          <span class="item">JavaScript</span>
-          <span class="item">TypeScript</span>
-          <span class="item">Rust</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="label">Frameworks</div>
-        <div class="items">
-          <span class="item">Django</span>
-          <span class="item">FastAPI</span>
-          <span class="item">React</span>
-          <span class="item">Next.js</span>
-          <span class="item">Expo</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="label">AI &amp; ML</div>
-        <div class="items">
-          <span class="item">Claude Code</span>
-          <span class="item">Codex</span>
-          <span class="item">LangChain</span>
-          <span class="item">TensorFlow</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="label">Infra</div>
-        <div class="items">
-          <span class="item">Docker</span>
-          <span class="item">Ansible</span>
-          <span class="item">Terraform</span>
-          <span class="item">GCP</span>
-          <span class="item">CI/CD</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="label">Data</div>
-        <div class="items">
-          <span class="item">PostgreSQL</span>
-          <span class="item">SQLite</span>
-          <span class="item">Redis</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- PROJECTS -->
+    <section id="work">
+      <h2 class="sec-title">Projects</h2>
 
-  <!-- CONTACT / FOOTER -->
-  <section id="contact" class="pf-section pf-contact" style="border-bottom:none;">
-    <h2>Have something to build? Let's talk.</h2>
-    <p class="sub">Open to freelance, contract, and consulting work — local LLM setups, cloud/DevOps, MVPs, landing pages.</p>
-    <div class="contact-links">
-      <a href="mailto:mikhail@trunov.me" class="contact-link">
-        <span class="label">Email</span>
-        <span class="value">mikhail@trunov.me</span>
+      <a href="https://kindercafe.app" target="_blank" rel="noopener" class="featured">
+        <span class="tag">Built by me &middot; live</span>
+        <h3>KinderCafe.app &#8599;</h3>
+        <p>Smartphone app for finding child-friendly locations and events in Germany.</p>
+        <div class="stack">Expo · Firebase · Cloud Run · Wagtail · PostGIS</div>
       </a>
-      <a href="https://linkedin.com/in/mtrunov" target="_blank" rel="noopener" class="contact-link">
-        <span class="label">LinkedIn</span>
-        <span class="value">/in/mtrunov</span>
-      </a>
-      <a href="https://github.com/eximius8" target="_blank" rel="noopener" class="contact-link">
-        <span class="label">GitHub</span>
-        <span class="value">/eximius8</span>
-      </a>
-      <a href="https://trunov.me/Mikhail_Trunov_CV.pdf" target="_blank" rel="noopener" class="contact-link">
-        <span class="label">CV</span>
-        <span class="value">download PDF</span>
-      </a>
-    </div>
-    <div class="pf-footer">
-      <div>&copy; 2026 Mikhail Trunov &middot; Germering, Germany</div>
-      <div>Built with AI, obviously.</div>
-    </div>
-  </section>
 
+      <ul class="proj-list">
+        <li>
+          <a href="https://github.com/eximius8/comportsniffer" target="_blank" rel="noopener">
+            <h3>comportsniffer <span class="arrow">&#8599;</span></h3>
+            <span class="year">Python</span>
+            <p>Tool to intercept and log data exchanged between an application and a physical COM-port device.</p>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/eximius8/ecowag" target="_blank" rel="noopener">
+            <h3>ecowag <span class="arrow">&#8599;</span></h3>
+            <span class="year">Wagtail</span>
+            <p>Web app and REST API that calculates hazard classes of chemical compounds, with LaTeX-generated PDF reports.</p>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/eximius8/evolventa" target="_blank" rel="noopener">
+            <h3>evolventa <span class="arrow">&#8599;</span></h3>
+            <span class="year">2008–2012</span>
+            <p>My first programming project: an AutoLISP script that draws involute gear profiles in AutoCAD and exports parameters to Excel.</p>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="sec-title">Skills</h2>
+      <dl class="skills">
+        <dt>Languages</dt>
+        <dd><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Rust</span></dd>
+        <dt>Frameworks</dt>
+        <dd><span class="chip">Django</span><span class="chip">FastAPI</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Expo</span></dd>
+        <dt>AI tooling</dt>
+        <dd><span class="chip">Claude Code</span><span class="chip">Codex</span><span class="chip">OpenClaw</span><span class="chip">LangChain</span><span class="chip">TensorFlow</span><span class="chip">MCP</span></dd>
+        <dt>Infra</dt>
+        <dd><span class="chip">Docker</span><span class="chip">Ansible</span><span class="chip">Terraform</span><span class="chip">GCP</span><span class="chip">CI/CD</span></dd>
+        <dt>Data</dt>
+        <dd><span class="chip">PostgreSQL</span><span class="chip">SQLite</span><span class="chip">Redis</span></dd>
+        <dt>Testing</dt>
+        <dd><span class="chip">pytest</span><span class="chip">unittest</span><span class="chip">jest</span></dd>
+      </dl>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <h2 class="sec-title">Education</h2>
+      <ul class="edu">
+        <li>
+          <div class="period">2016 — 2019</div>
+          <div><strong>M.Sc. Advanced Materials and Processes</strong><span>FAU Erlangen-Nürnberg, Germany</span></div>
+        </li>
+        <li>
+          <div class="period">2010 — 2012</div>
+          <div><strong>M.Eng. Materials Science</strong><span>Volgograd State Technical University, Russia</span></div>
+        </li>
+        <li>
+          <div class="period">2006 — 2010</div>
+          <div><strong>B.Eng. Industrial Engineering</strong><span>Volgograd State Technical University, Russia</span></div>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <span>&copy; <span id="year">2026</span> Mikhail Trunov</span>
+      <span>trunov.me</span>
+    </footer>
+  </main>
 </div>
+
+<script>
+  // Tenure since Nov 2021, kept current automatically
+  (function () {
+    var start = new Date(2021, 10, 1), now = new Date();
+    var months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+    var y = Math.floor(months / 12), m = months % 12;
+    var parts = [];
+    if (y) parts.push(y + (y === 1 ? ' year' : ' years'));
+    if (m) parts.push(m + ' mo');
+    var el = document.getElementById('tenure');
+    if (el && parts.length) el.textContent = parts.join(' ');
+    var yr = document.getElementById('year');
+    if (yr) yr.textContent = now.getFullYear();
+  })();
+
+  // Theme toggle
+  (function () {
+    var btn = document.getElementById('themeToggle');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var root = document.documentElement;
+      var cur = root.getAttribute('data-theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+  })();
+</script>
 
 </body>
 </html>
