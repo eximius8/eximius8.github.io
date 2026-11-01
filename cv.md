@@ -1,32 +1,26 @@
 # Mikhail Trunov
 
-## 📫 Contact
-💻 [trunov.me](https://trunov.me)
-📧 mikhail@trunov.me
-💼 [linkedin.com/in/mtrunov](https://linkedin.com/in/mtrunov)
-🐙 [github.com/eximius8](https://github.com/eximius8)
-📍 82110, Germering, Germany
+## Contact
+[trunov.me](https://trunov.me) · mikhail@trunov.me · [linkedin.com/in/mtrunov](https://linkedin.com/in/mtrunov) · [github.com/eximius8](https://github.com/eximius8) · Germering, Germany
 
 ---
 
-## 🧠 Summary
+## Summary
 AI/ML engineer with a full-stack background. Currently developing a machine-learning classifier for ultrasound images at ASTRAIA, on top of years of building production medical software in Python. I use AI agents daily to design, build and ship products end to end.
 
 ---
 
-## 🛠️ Skills
-- AI & ML: PyTorch (primary), image classification, medical imaging, LLM pipelines (Gemini), TensorFlow, LangChain, MCP
-- AI-assisted development: Claude Code, Codex, OpenClaw (daily use)
-- Languages: Python (expert), JavaScript, TypeScript, Rust (beginner)
-- Web Frameworks: Django, FastAPI, React, Next.js, expo
-- DevOps & Cloud: Docker, Ansible, Terraform, CI/CD, GCP
-- Testing: pytest, unittest, jest
-- Databases: PostgreSQL, SQLite, Redis
-- Other Tools: Git, Linux, REST APIs, OpenAPI/Swagger, Telegram bots
+## Skills
+- ML & AI: PyTorch (primary), TensorFlow, Gemini API, LangChain, MCP
+- Domains: medical imaging, image classification, LLM data pipelines
+- AI agents: Claude Code, Codex, OpenClaw (daily use)
+- Languages: Python (expert), TypeScript, JavaScript
+- Web: Django, FastAPI, React, Next.js, Expo
+- Infra & data: Docker, Terraform, GCP, CI/CD, PostgreSQL, Redis, pytest
 
 ---
 
-## 💪 Built by me
+## Built by me
 ### [KinderCafe.app](https://kindercafe.app)
 Smartphone app for finding child-friendly locations and events in Germany.
 - Built an LLM pipeline with Gemini that parses events from the websites of family and community centres
@@ -34,7 +28,7 @@ Smartphone app for finding child-friendly locations and events in Germany.
 
 ---
 
-## 💼 Experience
+## Experience
 ### Medical Developer – NEXUS / ASTRAIA, Ismaning, Germany
 *Nov 2021 – Present (5 years)*
 - Developing a machine-learning classifier for ultrasound images
@@ -45,7 +39,7 @@ Smartphone app for finding child-friendly locations and events in Germany.
 
 ---
 
-## 🎓 Education
+## Education
 2016 - 2019 **M.Sc. in Advanced Materials and Processes (MAP)** – FAU Erlangen-Nürnberg, Germany
 
 2010 - 2012 **M.Eng. in Materials Science** – Volgograd State Technical University, Russia
@@ -54,7 +48,7 @@ Smartphone app for finding child-friendly locations and events in Germany.
 
 ---
 
-## 💬 Languages
+## Languages
 - English (fluent)
 - German (intermediate)
 - Russian (Native)

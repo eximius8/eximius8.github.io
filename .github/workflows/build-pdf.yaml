@@ -1,10 +1,11 @@
-name: Generate CV PDF from Markdown
+name: Generate CV PDF from site
 
 on:
   push:
     branches: [ main ]
     paths:
-      - 'cv.md'
+      - 'docs/index.html'
+      - 'scripts/build-pdf.cjs'
       - '.github/workflows/build-pdf.yaml'
   workflow_dispatch:
 
@@ -18,15 +19,17 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Convert Markdown to PDF
-      uses: baileyjm02/markdown-to-pdf@v1
+    - uses: actions/setup-node@v4
       with:
-        input_path: cv.md
-        output_dir: ./
-        build_html: false
+        node-version: 20
 
-    - name: Rename PDF
-      run: mv cv.pdf Mikhail_Trunov_CV.pdf
+    - name: Install Playwright Chromium
+      run: |
+        npm install --no-save playwright@1.49.1
+        npx playwright install --with-deps chromium
+
+    - name: Render PDF from docs/index.html (print styles)
+      run: node scripts/build-pdf.cjs Mikhail_Trunov_CV.pdf
 
     - name: Publish PDF to site
       run: |
@@ -42,6 +45,6 @@ jobs:
       with:
         tag_name: cv-latest
         name: Latest CV PDF
-        body: 'Auto-generated CV PDF from cv.md - Updated on ${{ github.event.head_commit.timestamp }}'
+        body: 'Auto-generated CV PDF from docs/index.html - Updated on ${{ github.event.head_commit.timestamp }}'
         files: Mikhail_Trunov_CV.pdf
         make_latest: true

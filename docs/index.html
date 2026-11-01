@@ -233,14 +233,54 @@
   }
 
   /* ---------- PRINT ---------- */
+  .print-only { display: none; }
+
+  @page { size: A4; margin: 12mm 13mm 10mm; }
   @media print {
-    :root { --bg: #fff; --surface: #fff; --ink: #000; --ink-2: #222; --muted: #555; --rule: #ccc; --accent: #1f3a5f; }
-    .page { grid-template-columns: 220px 1fr; gap: 36px; padding: 0; }
-    .side { position: static; }
-    .theme-toggle, .btn-cv { display: none; }
-    .featured { transform: none !important; }
-    section { break-inside: avoid; }
+    :root {
+      --bg: #fff !important; --surface: #fff !important; --ink: #111 !important;
+      --ink-2: #333 !important; --muted: #666 !important; --rule: #d9d6cf !important;
+      --accent: #1f3a5f !important; --accent-soft: #e4e9f0 !important;
+    }
+    html { scroll-behavior: auto; }
+    body { font-size: 9.6pt; line-height: 1.45; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { grid-template-columns: 52mm 1fr; gap: 9mm; padding: 0; max-width: none; }
+    .side { position: static; gap: 6mm; }
+    .monogram { width: 11mm; height: 11mm; border-radius: 3mm; font-size: 13pt; }
+    .side h1 { font-size: 21pt; margin: 4mm 0 1.5mm; }
+    .role { font-size: 10pt; }
+    .loc, .side-block h2, .sec-title, .period, .featured .stack { font-size: 7.8pt; }
+    .contact-list { flex-direction: column; gap: 1mm; }
+    .contact-list a { font-size: 8.8pt; color: var(--ink-2); }
+    .print-only { display: list-item; }
+    .lang-list { font-size: 9pt; }
+    .lang-list li { padding: 1mm 0; }
+    .lang-list span { font-size: 8.4pt; }
+    .theme-toggle, .btn-cv, footer { display: none; }
+
+    .intro { font-size: 13.5pt; line-height: 1.28; margin-bottom: 2mm; }
+    .intro-sub { font-size: 9.8pt; max-width: none; }
+    section { padding-top: 3.5mm; margin-top: 3.5mm; }
+    .sec-title { margin-bottom: 3.5mm; }
+    .job, .edu li { grid-template-columns: 27mm 1fr; gap: 4mm; }
+    .job h3 { font-size: 12.5pt; }
+    .org { font-size: 9.4pt; margin: 0 0 2mm; }
+    .job li + li { margin-top: 0.6mm; }
+    .featured { padding: 3mm 4.5mm; border-radius: 3mm; transform: none !important; break-inside: avoid; }
+    .featured .tag { display: none; }
+    .featured h3 { font-size: 13pt; margin-bottom: 1.5mm; }
+    .featured .stack { margin-top: 2mm; }
+    .skills { grid-template-columns: 27mm 1fr; gap: 1.6mm 4mm; }
+    .skills dt { font-size: 8.8pt; padding-top: 0.5mm; }
+    .skills dd { gap: 0 1.2mm; }
+    .chip { font-size: 9pt; padding: 0; border: none; background: none; color: var(--ink-2); }
+    .chip:not(:last-child)::after { content: ","; }
+    .chip-main { color: var(--accent); }
+    .edu li + li { margin-top: 2.5mm; }
+    .edu span { font-size: 9pt; }
+    .job, .edu li, .skills { break-inside: avoid; }
   }
+
 </style>
 <script>
   (function () {
@@ -268,8 +308,9 @@
       <h2>Contact</h2>
       <ul class="contact-list">
         <li><a href="mailto:mikhail@trunov.me">mikhail@trunov.me</a></li>
-        <li><a href="https://linkedin.com/in/mtrunov" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://github.com/eximius8" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/mtrunov" target="_blank" rel="noopener">linkedin.com/in/mtrunov</a></li>
+        <li><a href="https://github.com/eximius8" target="_blank" rel="noopener">github.com/eximius8</a></li>
+        <li class="print-only"><a href="https://trunov.me">trunov.me</a></li>
       </ul>
       <a class="btn-cv" href="/Mikhail_Trunov_CV.pdf" target="_blank" rel="noopener">Download CV &#8595;</a>
     </div>
@@ -327,20 +368,18 @@
     <section id="skills">
       <h2 class="sec-title">Skills</h2>
       <dl class="skills">
-        <dt>AI &amp; ML</dt>
-        <dd><span class="chip chip-main">PyTorch</span><span class="chip">Image classification</span><span class="chip">Medical imaging</span><span class="chip">Gemini</span><span class="chip">TensorFlow</span><span class="chip">LangChain</span><span class="chip">MCP</span></dd>
+        <dt>ML &amp; AI</dt>
+        <dd><span class="chip chip-main">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">Gemini API</span><span class="chip">LangChain</span><span class="chip">MCP</span></dd>
+        <dt>Domains</dt>
+        <dd><span class="chip">Medical imaging</span><span class="chip">Image classification</span><span class="chip">LLM data pipelines</span></dd>
         <dt>AI agents</dt>
         <dd><span class="chip">Claude Code</span><span class="chip">Codex</span><span class="chip">OpenClaw</span></dd>
         <dt>Languages</dt>
-        <dd><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Rust</span></dd>
-        <dt>Frameworks</dt>
+        <dd><span class="chip">Python</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span></dd>
+        <dt>Web</dt>
         <dd><span class="chip">Django</span><span class="chip">FastAPI</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Expo</span></dd>
-        <dt>Infra</dt>
-        <dd><span class="chip">Docker</span><span class="chip">Ansible</span><span class="chip">Terraform</span><span class="chip">GCP</span><span class="chip">CI/CD</span></dd>
-        <dt>Data</dt>
-        <dd><span class="chip">PostgreSQL</span><span class="chip">SQLite</span><span class="chip">Redis</span></dd>
-        <dt>Testing</dt>
-        <dd><span class="chip">pytest</span><span class="chip">unittest</span><span class="chip">jest</span></dd>
+        <dt>Infra &amp; data</dt>
+        <dd><span class="chip">Docker</span><span class="chip">Terraform</span><span class="chip">GCP</span><span class="chip">CI/CD</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">pytest</span></dd>
       </dl>
     </section>
 
