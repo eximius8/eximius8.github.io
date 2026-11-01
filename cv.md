@@ -10,19 +10,19 @@
 ---
 
 ## 🧠 Summary
-I am a full-stack builder. I can build anything now with AI.
+AI/ML engineer with a full-stack background. Currently developing a machine-learning classifier for ultrasound images at ASTRAIA, on top of years of building production medical software in Python. I use AI agents daily to design, build and ship products end to end.
 
 ---
 
 ## 🛠️ Skills
-- I cannot imagine my life without claudecode, codex and openclaw
+- AI & ML: image classification, medical imaging, TensorFlow, LangChain, MCP
+- AI-assisted development: Claude Code, Codex, OpenClaw (daily use)
 - Languages: Python (expert), JavaScript, TypeScript, Rust (beginner)
 - Web Frameworks: Django, FastAPI, React, Next.js, expo
-- AI & ML Tools: TensorFlow, LangChain
 - DevOps & Cloud: Docker, Ansible, Terraform, CI/CD, GCP
 - Testing: pytest, unittest, jest
 - Databases: PostgreSQL, SQLite, Redis
-- Other Tools: Git, Linux, MCP, REST APIs, OpenAPI/Swagger, Telegram bots
+- Other Tools: Git, Linux, REST APIs, OpenAPI/Swagger, Telegram bots
 
 ---
 
@@ -49,6 +49,7 @@ Developed an AutoLISP script to automate the drawing of involute gear profiles i
 ## 💼 Experience
 ### Medical Developer – NEXUS / ASTRAIA, Ismaning, Germany
 *Nov 2021 – Present (5 years)*
+- Developing a machine-learning classifier for ultrasound images
 - Designed and implemented the FMF (Fetal Medicine Foundation) risk algorithm in Python to assess pregnancy complication risks
 - Developed a Django-based web application to host and deliver the FMF algorithm
 - Built internal tools using Tauri to support the design and development of the main medical software
