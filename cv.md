@@ -15,7 +15,7 @@ AI/ML engineer with a full-stack background. Currently developing a machine-lear
 ---
 
 ## 🛠️ Skills
-- AI & ML: image classification, medical imaging, TensorFlow, LangChain, MCP
+- AI & ML: PyTorch (primary), image classification, medical imaging, LLM pipelines (Gemini), TensorFlow, LangChain, MCP
 - AI-assisted development: Claude Code, Codex, OpenClaw (daily use)
 - Languages: Python (expert), JavaScript, TypeScript, Rust (beginner)
 - Web Frameworks: Django, FastAPI, React, Next.js, expo
@@ -28,21 +28,9 @@ AI/ML engineer with a full-stack background. Currently developing a machine-lear
 
 ## 💪 Built by me
 ### [KinderCafe.app](https://kindercafe.app)
-Smartphone app project for finding child-friendly locations and events in Germany. Tech stack: Expo, Firebase, Cloud Run with Wagtail backend with postgis.
-
-## ✏️ Projects
-### [Python package for monitoring serial (COM) port communication (eximius8/comportsniffer)](https://github.com/eximius8/comportsniffer)
-Developed a Python tool to intercept and log data exchanged between a software application and a physical COM port device.
-Primarily created as a vibe-coding project to explore low-level serial communication and real-time data sniffing.
-
-### [Hazard Class Calculator Web App (eximius8/ecowag)](https://github.com/eximius8/ecowag)
-Wagtail-based web application and REST API for classifying chemical substance hazards
-Built a Wagtail application to calculate hazard classes of compound substances in accordance with Russian environmental regulations.
-Includes PDF report generation using `LaTeX` via the `pylatex` library.
-
-### [AutoLISP Script for Involute Gear Profile Generation in AutoCAD (eximius8/evolventa)](https://github.com/eximius8/evolventa)
-**2008-2012** My first programming project as a student.
-Developed an AutoLISP script to automate the drawing of involute gear profiles in AutoCAD. The script calculates gear geometry based on user input and generates corresponding drawings. It also exports gear parameters to an Excel spreadsheet for documentation and further analysis.
+Smartphone app for finding child-friendly locations and events in Germany.
+- Built an LLM pipeline with Gemini that parses events from the websites of family and community centres
+- Tech stack: Expo, Firebase, Cloud Run, Wagtail backend with PostGIS, Gemini
 
 ---
 

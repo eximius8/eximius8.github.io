@@ -175,7 +175,6 @@
     border: 1px solid var(--rule);
     border-radius: 14px;
     padding: 28px 30px;
-    margin-bottom: 16px;
     transition: border-color .15s, transform .15s;
   }
   .featured:hover { border-color: var(--accent); transform: translateY(-2px); }
@@ -190,17 +189,6 @@
   .featured p { margin: 0; color: var(--ink-2); max-width: 560px; }
   .featured .stack { font-family: var(--mono); font-size: 12.5px; color: var(--muted); margin-top: 14px; }
 
-  .proj-list { list-style: none; margin: 0; padding: 0; }
-  .proj-list li { border-bottom: 1px solid var(--rule); }
-  .proj-list a {
-    display: grid; grid-template-columns: 1fr auto; gap: 4px 24px;
-    padding: 20px 4px; text-decoration: none;
-  }
-  .proj-list h3 { font-size: 16.5px; font-weight: 600; margin: 0; }
-  .proj-list h3 .arrow { display: inline-block; color: var(--muted); transition: transform .15s, color .15s; }
-  .proj-list a:hover h3 .arrow { transform: translate(2px, -2px); color: var(--accent); }
-  .proj-list .year { font-family: var(--mono); font-size: 13px; color: var(--muted); }
-  .proj-list p { grid-column: 1 / -1; margin: 0; color: var(--ink-2); font-size: 15px; }
 
   /* Skills */
   .skills { display: grid; grid-template-columns: 140px 1fr; gap: 14px 24px; margin: 0; }
@@ -214,6 +202,7 @@
     border-radius: 6px;
     color: var(--ink-2);
   }
+  .chip-main { border-color: var(--accent); color: var(--accent); font-weight: 600; }
 
   /* Education */
   .edu { list-style: none; margin: 0; padding: 0; }
@@ -323,38 +312,15 @@
 
     <!-- PROJECTS -->
     <section id="work">
-      <h2 class="sec-title">Projects</h2>
+      <h2 class="sec-title">Side project</h2>
 
       <a href="https://kindercafe.app" target="_blank" rel="noopener" class="featured">
         <span class="tag">Built by me &middot; live</span>
         <h3>KinderCafe.app &#8599;</h3>
-        <p>Smartphone app for finding child-friendly locations and events in Germany.</p>
-        <div class="stack">Expo · Firebase · Cloud Run · Wagtail · PostGIS</div>
+        <p>Smartphone app for finding child-friendly locations and events in Germany. Events are parsed from the websites of family and community centres by an LLM pipeline built on Gemini.</p>
+        <div class="stack">Gemini · Expo · Firebase · Cloud Run · Wagtail · PostGIS</div>
       </a>
 
-      <ul class="proj-list">
-        <li>
-          <a href="https://github.com/eximius8/comportsniffer" target="_blank" rel="noopener">
-            <h3>comportsniffer <span class="arrow">&#8599;</span></h3>
-            <span class="year">Python</span>
-            <p>Tool to intercept and log data exchanged between an application and a physical COM-port device.</p>
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/eximius8/ecowag" target="_blank" rel="noopener">
-            <h3>ecowag <span class="arrow">&#8599;</span></h3>
-            <span class="year">Wagtail</span>
-            <p>Web app and REST API that calculates hazard classes of chemical compounds, with LaTeX-generated PDF reports.</p>
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/eximius8/evolventa" target="_blank" rel="noopener">
-            <h3>evolventa <span class="arrow">&#8599;</span></h3>
-            <span class="year">2008–2012</span>
-            <p>My first programming project: an AutoLISP script that draws involute gear profiles in AutoCAD and exports parameters to Excel.</p>
-          </a>
-        </li>
-      </ul>
     </section>
 
     <!-- SKILLS -->
@@ -362,7 +328,7 @@
       <h2 class="sec-title">Skills</h2>
       <dl class="skills">
         <dt>AI &amp; ML</dt>
-        <dd><span class="chip">Image classification</span><span class="chip">Medical imaging</span><span class="chip">TensorFlow</span><span class="chip">LangChain</span><span class="chip">MCP</span></dd>
+        <dd><span class="chip chip-main">PyTorch</span><span class="chip">Image classification</span><span class="chip">Medical imaging</span><span class="chip">Gemini</span><span class="chip">TensorFlow</span><span class="chip">LangChain</span><span class="chip">MCP</span></dd>
         <dt>AI agents</dt>
         <dd><span class="chip">Claude Code</span><span class="chip">Codex</span><span class="chip">OpenClaw</span></dd>
         <dt>Languages</dt>
