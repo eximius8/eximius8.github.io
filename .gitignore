@@ -3,3 +3,5 @@
 
 # Exported preview bundle; the published site lives in /docs
 /index.html
+
+node_modules/
