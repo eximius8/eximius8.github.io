@@ -1,10 +1,12 @@
-name: Generate CV PDF from site
+name: Generate CV PDFs from site
 
 on:
   push:
     branches: [ main ]
     paths:
       - 'docs/index.html'
+      - 'docs/de/index.html'
+      - 'docs/assets/**'
       - 'scripts/build-pdf.cjs'
       - '.github/workflows/build-pdf.yaml'
   workflow_dispatch:
@@ -28,15 +30,14 @@ jobs:
         npm install --no-save playwright@1.49.1
         npx playwright install --with-deps chromium
 
-    - name: Render PDF from docs/index.html (print styles)
-      run: node scripts/build-pdf.cjs Mikhail_Trunov_CV.pdf
+    - name: Render EN and DE PDFs from the site (print styles)
+      run: node scripts/build-pdf.cjs docs
 
-    - name: Publish PDF to site
+    - name: Publish PDFs to site
       run: |
-        cp Mikhail_Trunov_CV.pdf docs/Mikhail_Trunov_CV.pdf
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        git add docs/Mikhail_Trunov_CV.pdf
+        git add docs/Mikhail_Trunov_CV.pdf docs/Mikhail_Trunov_Lebenslauf.pdf
         git diff --cached --quiet || git commit -m "Update CV PDF [skip ci]"
         git push
 
@@ -44,7 +45,9 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         tag_name: cv-latest
-        name: Latest CV PDF
-        body: 'Auto-generated CV PDF from docs/index.html - Updated on ${{ github.event.head_commit.timestamp }}'
-        files: Mikhail_Trunov_CV.pdf
+        name: Latest CV PDFs
+        body: 'Auto-generated CV PDFs (EN and DE) from the site - Updated on ${{ github.event.head_commit.timestamp }}'
+        files: |
+          docs/Mikhail_Trunov_CV.pdf
+          docs/Mikhail_Trunov_Lebenslauf.pdf
         make_latest: true
