@@ -210,6 +210,9 @@
   .edu li + li { margin-top: 20px; }
   .edu strong { display: block; font-weight: 600; }
   .edu span { color: var(--ink-2); font-size: 15px; }
+  .edu .thesis { margin: 6px 0 0; font-size: 14px; color: var(--ink-2); max-width: 600px; }
+  .edu .thesis em { color: var(--muted); }
+  .side-note { margin: 0; font-size: 14.5px; color: var(--ink-2); }
 
   footer {
     margin-top: 72px; padding-top: 24px;
@@ -243,7 +246,7 @@
       --accent: #1f3a5f !important; --accent-soft: #e4e9f0 !important;
     }
     html { scroll-behavior: auto; }
-    body { font-size: 9.6pt; line-height: 1.45; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { font-size: 9.3pt; line-height: 1.4; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .page { grid-template-columns: 52mm 1fr; gap: 9mm; padding: 0; max-width: none; }
     .side { position: static; gap: 6mm; }
     .monogram { width: 11mm; height: 11mm; border-radius: 3mm; font-size: 13pt; }
@@ -258,10 +261,10 @@
     .lang-list span { font-size: 8.4pt; }
     .theme-toggle, .btn-cv, footer { display: none; }
 
-    .intro { font-size: 13.5pt; line-height: 1.28; margin-bottom: 2mm; }
-    .intro-sub { font-size: 9.8pt; max-width: none; }
-    section { padding-top: 3.5mm; margin-top: 3.5mm; }
-    .sec-title { margin-bottom: 3.5mm; }
+    .intro { font-size: 12.5pt; line-height: 1.25; margin-bottom: 1.5mm; }
+    .intro-sub { font-size: 9.4pt; max-width: none; }
+    section { padding-top: 2.8mm; margin-top: 2.8mm; }
+    .sec-title { margin-bottom: 2.5mm; }
     .job, .edu li { grid-template-columns: 27mm 1fr; gap: 4mm; }
     .job h3 { font-size: 12.5pt; }
     .org { font-size: 9.4pt; margin: 0 0 2mm; }
@@ -269,15 +272,19 @@
     .featured { padding: 3mm 4.5mm; border-radius: 3mm; transform: none !important; break-inside: avoid; }
     .featured .tag { display: none; }
     .featured h3 { font-size: 13pt; margin-bottom: 1.5mm; }
-    .featured .stack { margin-top: 2mm; }
-    .skills { grid-template-columns: 27mm 1fr; gap: 1.6mm 4mm; }
+    .featured .stack { margin-top: 1.2mm; }
+    .skills { grid-template-columns: 27mm 1fr; gap: 1mm 4mm; }
     .skills dt { font-size: 8.8pt; padding-top: 0.5mm; }
     .skills dd { gap: 0 1.2mm; }
     .chip { font-size: 9pt; padding: 0; border: none; background: none; color: var(--ink-2); }
     .chip:not(:last-child)::after { content: ","; }
     .chip-main { color: var(--accent); }
-    .edu li + li { margin-top: 2.5mm; }
+    .edu li + li { margin-top: 1.6mm; }
+    .edu strong { display: inline; }
+    .edu strong::after { content: " · "; font-weight: 400; color: var(--muted); }
     .edu span { font-size: 9pt; }
+    .edu .thesis { font-size: 8.6pt; margin-top: 0.8mm; }
+    .side-note { font-size: 9pt; }
     .job, .edu li, .skills { break-inside: avoid; }
   }
 
@@ -319,9 +326,14 @@
       <h2>Languages</h2>
       <ul class="lang-list">
         <li>Russian <span>native</span></li>
-        <li>English <span>fluent</span></li>
-        <li>German <span>intermediate</span></li>
+        <li>English <span>C1</span></li>
+        <li>German <span>B1</span></li>
       </ul>
+    </div>
+
+    <div class="side-block">
+      <h2>Work permit</h2>
+      <p class="side-note">Permanent residence in Germany &mdash; no visa sponsorship needed</p>
     </div>
 
     <button class="theme-toggle" type="button" id="themeToggle">◐ theme</button>
@@ -336,7 +348,7 @@
     <section id="experience">
       <h2 class="sec-title">Experience</h2>
       <div class="job">
-        <div class="period">Nov 2021 — now<span class="dur" id="tenure">5 years</span></div>
+        <div class="period">11/2021 — now<span class="dur" id="tenure">5 years</span></div>
         <div>
           <h3>Medical Developer</h3>
           <div class="org">NEXUS / ASTRAIA &middot; Ismaning, Germany</div>
@@ -345,6 +357,7 @@
             <li>Designed and implemented the FMF (Fetal Medicine Foundation) risk algorithm in Python to assess pregnancy complication risks.</li>
             <li>Developed a Django web application to host and deliver the FMF algorithm.</li>
             <li>Built internal tools with Tauri to support design and development of the main medical software.</li>
+            <li>Wrote technical documentation for medical device software under the EU MDR.</li>
             <li>Migrated CI/CD pipelines from Jenkins to Bitbucket Pipelines.</li>
           </ul>
         </div>
@@ -371,7 +384,7 @@
         <dt>ML &amp; AI</dt>
         <dd><span class="chip chip-main">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">Gemini API</span><span class="chip">LangChain</span><span class="chip">MCP</span></dd>
         <dt>Domains</dt>
-        <dd><span class="chip">Medical imaging</span><span class="chip">Image classification</span><span class="chip">LLM data pipelines</span></dd>
+        <dd><span class="chip">Medical imaging</span><span class="chip">Image classification</span><span class="chip">LLM data pipelines</span><span class="chip">EU MDR documentation</span></dd>
         <dt>AI agents</dt>
         <dd><span class="chip">Claude Code</span><span class="chip">Codex</span><span class="chip">OpenClaw</span></dd>
         <dt>Languages</dt>
@@ -389,7 +402,8 @@
       <ul class="edu">
         <li>
           <div class="period">2016 — 2019</div>
-          <div><strong>M.Sc. Advanced Materials and Processes</strong><span>FAU Erlangen-Nürnberg, Germany</span></div>
+          <div><strong>M.Sc. Advanced Materials and Processes</strong><span>FAU Erlangen-Nürnberg, Germany</span>
+            <p class="thesis"><em>Thesis:</em> effect of residual oxygen (0&ndash;1000&nbsp;ppm) in the LPBF build chamber on Scalmalloy, AlSi7Mg and Inconel 718 parts &mdash; automated porosity image analysis (ImageJ) and regression models of density vs. laser parameters (Python, scikit-learn).</p></div>
         </li>
         <li>
           <div class="period">2010 — 2012</div>
