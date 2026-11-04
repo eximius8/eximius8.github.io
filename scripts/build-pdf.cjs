@@ -1,18 +1,28 @@
-// Renders docs/index.html with its print styles into docs/Mikhail_Trunov_CV.pdf
+// Renders the CV pages with their print styles into PDFs in docs/:
+//   docs/index.html    -> docs/Mikhail_Trunov_CV.pdf
+//   docs/de/index.html -> docs/Mikhail_Trunov_Lebenslauf.pdf
+// Usage: node scripts/build-pdf.cjs [outDir]
 const path = require('path');
 const { chromium } = require('playwright');
 
-(async () => {
-  const root = path.resolve(__dirname, '..');
-  const input = 'file://' + path.join(root, 'docs', 'index.html');
-  const output = process.argv[2] || path.join(root, 'docs', 'Mikhail_Trunov_CV.pdf');
+const root = path.resolve(__dirname, '..');
+const outDir = path.resolve(process.argv[2] || path.join(root, 'docs'));
+const jobs = [
+  ['docs/index.html', 'Mikhail_Trunov_CV.pdf'],
+  ['docs/de/index.html', 'Mikhail_Trunov_Lebenslauf.pdf'],
+];
 
+(async () => {
   const browser = await chromium.launch();
-  const page = await browser.newPage({ colorScheme: 'light' });
-  await page.goto(input, { waitUntil: 'networkidle' });
-  await page.evaluate(() => document.fonts.ready);
-  await page.emulateMedia({ media: 'print', colorScheme: 'light' });
-  await page.pdf({ path: output, preferCSSPageSize: true, printBackground: true });
+  for (const [src, name] of jobs) {
+    const page = await browser.newPage({ colorScheme: 'light' });
+    await page.goto('file://' + path.join(root, src), { waitUntil: 'networkidle' });
+    await page.evaluate(() => document.fonts.ready);
+    await page.emulateMedia({ media: 'print', colorScheme: 'light' });
+    const out = path.join(outDir, name);
+    await page.pdf({ path: out, preferCSSPageSize: true, printBackground: true });
+    await page.close();
+    console.log('PDF written to', out);
+  }
   await browser.close();
-  console.log('PDF written to', output);
 })().catch((err) => { console.error(err); process.exit(1); });
